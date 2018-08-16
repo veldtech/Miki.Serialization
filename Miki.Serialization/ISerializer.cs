@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Miki.Cache
+namespace Miki.Serialization
 {
     public interface ISerializer
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using ProtoBuf;
 
-namespace Miki.Cache.Serializers.Protobuf
+namespace Miki.Serialization.Protobuf
 {
 	public class ProtobufSerializer : ISerializer
 	{
