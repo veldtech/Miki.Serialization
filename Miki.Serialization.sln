@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miki.Serialization.ETF", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miki.Serialization.Protobuf", "Miki.Serialization.Protobuf\Miki.Serialization.Protobuf.csproj", "{4229B4D3-406F-48A8-9693-556C2F11ABCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miki.Serialization.MsgPack", "Miki.Serialization.MsgPack\Miki.Serialization.MsgPack.csproj", "{EC409947-C525-4E38-8659-DB88C1BFB549}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4229B4D3-406F-48A8-9693-556C2F11ABCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4229B4D3-406F-48A8-9693-556C2F11ABCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4229B4D3-406F-48A8-9693-556C2F11ABCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC409947-C525-4E38-8659-DB88C1BFB549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC409947-C525-4E38-8659-DB88C1BFB549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC409947-C525-4E38-8659-DB88C1BFB549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC409947-C525-4E38-8659-DB88C1BFB549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
