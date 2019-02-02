@@ -18,7 +18,7 @@ namespace Miki.Serialization.Protobuf
 		{
 			using (var ms = new MemoryStream())
 			{
-				Serializer.Serialize<T>(ms, data);
+				Serializer.Serialize(ms, data);
 				return ms.ToArray();
 			}
 		}
