@@ -1,0 +1,81 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#
+	var types = new string[] {
+		"SpanJson",
+		"JsonNet",
+		"MsgPack",
+		"Protobuf"
+	};
+
+	
+	var jsonTypes = new string[] {
+		"SpanJson",
+		"JsonNet"
+	};
+
+	var exportAttribute = "[Config(typeof(Program.Config))]";
+#>
+using System;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
+<# foreach(var type in types) { #>
+using Miki.Serialization.<#= type #>;
+<# } #>
+
+namespace Miki.Serialization.Benchmark
+{
+	<#= exportAttribute #>
+    [Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
+    public class SerializeBenchmarks
+    {
+		private TestClass Data;
+
+<# foreach(var type in types) { #>
+        private readonly ISerializer <#= type #>Serializer = new <#= type #>Serializer();
+<# } #>
+
+        [GlobalSetup]
+        public void Setup()
+        {
+            Data = new TestClass {Foo = "bar"};
+        }
+<# foreach(var type in types) { #>
+
+		[Benchmark]
+        public byte[] <#= type #>()
+        {
+            return <#= type #>Serializer.Serialize(Data);
+        }
+<# } #>
+	}
+
+	<#= exportAttribute #>
+    [Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
+    public class DeserializeBenchmarks
+    {
+		private TestClass Data;
+
+<# foreach(var type in types) { #>
+        private readonly ISerializer <#= type #>Serializer = new <#= type #>Serializer();
+        private byte[] <#= type #>Data;
+<# } #>
+
+        [GlobalSetup]
+        public void Setup()
+        {
+            Data = new TestClass {Foo = "bar"};
+<# foreach(var type in types) { #>
+			<#= type #>Data = <#= type #>Serializer.Serialize(Data);
+<# } #>
+        }
+<# foreach(var type in types) { #>
+
+		[Benchmark]
+        public TestClass <#= type #>()
+        {
+            return <#= type #>Serializer.Deserialize<TestClass>(<#= type #>Data);
+        }
+<# } #>
+	}
+}

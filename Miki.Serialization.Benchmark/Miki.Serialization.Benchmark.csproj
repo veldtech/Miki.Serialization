@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Miki.Serialization.JsonNet\Miki.Serialization.JsonNet.csproj" />
+    <ProjectReference Include="..\Miki.Serialization.MsgPack\Miki.Serialization.MsgPack.csproj" />
+    <ProjectReference Include="..\Miki.Serialization.Protobuf\Miki.Serialization.Protobuf.csproj" />
+    <ProjectReference Include="..\Miki.Serialization.SpanJson\Miki.Serialization.SpanJson.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Benchmarks.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Benchmarks.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Benchmarks.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Benchmarks.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
